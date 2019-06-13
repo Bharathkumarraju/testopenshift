@@ -1,0 +1,75 @@
+kind: ReplicationController
+apiVersion: v1
+metadata:
+  name: hanumansphp-1
+  namespace: hanumans-php
+  selfLink: /api/v1/namespaces/hanumans-php/replicationcontrollers/hanumansphp-1
+  uid: c409efd1-8dc2-11e9-b122-0203665c4294
+  resourceVersion: '16215117'
+  generation: 2
+  creationTimestamp: '2019-06-13T10:05:26Z'
+  labels:
+    app: hanumansphp
+    openshift.io/deployment-config.name: hanumansphp
+  annotations:
+    openshift.io/deployer-pod.completed-at: '2019-06-13 10:05:44 +0000 UTC'
+    openshift.io/deployer-pod.created-at: '2019-06-13 10:05:26 +0000 UTC'
+    openshift.io/deployer-pod.name: hanumansphp-1-deploy
+    openshift.io/deployment-config.latest-version: '1'
+    openshift.io/deployment-config.name: hanumansphp
+    openshift.io/deployment.phase: Complete
+    openshift.io/deployment.replicas: '1'
+    openshift.io/deployment.status-reason: config change
+    openshift.io/encoded-deployment-config: >
+      {"kind":"DeploymentConfig","apiVersion":"apps.openshift.io/v1","metadata":{"name":"hanumansphp","namespace":"hanumans-php","selfLink":"/apis/apps.openshift.io/v1/namespaces/hanumans-php/deploymentconfigs/hanumansphp","uid":"a1172729-8dc2-11e9-a1e7-0a580a82007f","resourceVersion":"16214790","generation":2,"creationTimestamp":"2019-06-13T10:04:27Z","labels":{"app":"hanumansphp"}},"spec":{"strategy":{"type":"Rolling","rollingParams":{"updatePeriodSeconds":1,"intervalSeconds":1,"timeoutSeconds":600,"maxUnavailable":"25%","maxSurge":"25%"},"resources":{},"activeDeadlineSeconds":21600},"triggers":[{"type":"ImageChange","imageChangeParams":{"automatic":true,"containerNames":["hanumansphp"],"from":{"kind":"ImageStreamTag","namespace":"hanumans-php","name":"hanumansphp:latest"},"lastTriggeredImage":"image-registry.openshift-image-registry.svc:5000/hanumans-php/hanumansphp@sha256:f9272536bb48783c5e85f9f311229c0e64c025749de03ea4f4aa0f818f089239"}},{"type":"ConfigChange"}],"replicas":1,"revisionHistoryLimit":10,"test":false,"selector":{"app":"hanumansphp","deploymentconfig":"hanumansphp"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"hanumansphp","deploymentconfig":"hanumansphp"}},"spec":{"containers":[{"name":"hanumansphp","image":"image-registry.openshift-image-registry.svc:5000/hanumans-php/hanumansphp@sha256:f9272536bb48783c5e85f9f311229c0e64c025749de03ea4f4aa0f818f089239","ports":[{"containerPort":8080,"protocol":"TCP"},{"containerPort":8443,"protocol":"TCP"}],"resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File","imagePullPolicy":"Always"}],"restartPolicy":"Always","terminationGracePeriodSeconds":30,"dnsPolicy":"ClusterFirst","securityContext":{},"schedulerName":"default-scheduler"}}},"status":{"latestVersion":1,"observedGeneration":1,"replicas":0,"updatedReplicas":0,"availableReplicas":0,"unavailableReplicas":0,"details":{"message":"config
+      change","causes":[{"type":"ConfigChange"}]},"conditions":[{"type":"Available","status":"False","lastUpdateTime":"2019-06-13T10:04:27Z","lastTransitionTime":"2019-06-13T10:04:27Z","message":"Deployment
+      config does not have minimum availability."}]}}
+  ownerReferences:
+    - apiVersion: apps.openshift.io/v1
+      kind: DeploymentConfig
+      name: hanumansphp
+      uid: a1172729-8dc2-11e9-a1e7-0a580a82007f
+      controller: true
+      blockOwnerDeletion: true
+spec:
+  replicas: 1
+  selector:
+    app: hanumansphp
+    deployment: hanumansphp-1
+    deploymentconfig: hanumansphp
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hanumansphp
+        deployment: hanumansphp-1
+        deploymentconfig: hanumansphp
+      annotations:
+        openshift.io/deployment-config.latest-version: '1'
+        openshift.io/deployment-config.name: hanumansphp
+        openshift.io/deployment.name: hanumansphp-1
+    spec:
+      containers:
+        - name: hanumansphp
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/hanumans-php/hanumansphp@sha256:f9272536bb48783c5e85f9f311229c0e64c025749de03ea4f4aa0f818f089239
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+status:
+  replicas: 1
+  fullyLabeledReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  observedGeneration: 2
